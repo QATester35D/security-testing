@@ -1,2 +1,2 @@
 # security-testing
-Various security tests.
+This is a Python repository that contains various security tests written to exercise various security capabilities.
