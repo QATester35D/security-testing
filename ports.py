@@ -1,5 +1,28 @@
 import socket
+import string
+import time
 
+# password_set = string.ascii_lowercase
+# time.sleep(1)
+
+# import psutil
+import re
+import subprocess
+
+def get_active_ports():
+    process = subprocess.run(['netstat', '-n'], capture_output=True)
+    report = process.stdout.decode().splitlines()
+    ports = set()
+    for i in report[4:]:
+        ports.add(re.split(':(?!.*:)', re.split('\s+', i)[2])[1]) #still figuring out the "\s+"
+    return ports
+
+print(get_active_ports())
+time.sleep(1)
+
+###########################################################################
+# Checking if specific ports are open or closed
+###########################################################################
 def check_port(host, port):
     socket_obj=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     socket.setdefaulttimeout(1)
@@ -10,7 +33,8 @@ def check_port(host, port):
 host="localhost"
 ports=[22,80,443]
 
-for port in ports:
+# for port in ports:
+for port in range(65535):
     if check_port(host,port):
         print(f"Port {port} is open on {host}.")
     else:
