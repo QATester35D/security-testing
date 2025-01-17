@@ -1,11 +1,5 @@
 import socket
-import string
 import time
-
-# password_set = string.ascii_lowercase
-# time.sleep(1)
-
-# import psutil
 import re
 import subprocess
 
@@ -14,7 +8,7 @@ def get_active_ports():
     report = process.stdout.decode().splitlines()
     ports = set()
     for i in report[4:]:
-        ports.add(re.split(':(?!.*:)', re.split('\s+', i)[2])[1]) #still figuring out the "\s+"
+        ports.add(re.split(':(?!.*:)', re.split('\s+', i)[2])[1]) 
     return ports
 
 print(get_active_ports())
