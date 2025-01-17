@@ -15,13 +15,10 @@ def generate_password(length, punctuation):
     # Define the characters to use in the password; Getting punctuation from what is passed in
     all_characters = string.ascii_letters + string.digits + punctuation
     allASCII_letters=string.ascii_letters
-    allASCII_lowercase_letters=string.ascii_lowercase
-    allASCII_uppercase_letters=string.ascii_uppercase
-    allDigits=string.digits
     # Add the minimum required characters from list in comments at top of script
-    letterLowerMin=random.sample(allASCII_lowercase_letters,1)
-    letterUpperMin=random.sample(allASCII_uppercase_letters,1)
-    digitMin=random.sample(allDigits,1)
+    letterLowerMin=random.sample(string.ascii_lowercase,1)
+    letterUpperMin=random.sample(string.ascii_uppercase,1)
+    digitMin=random.sample(string.digits,1)
     punctuationMin=random.sample(punctuation, 1)
     result=letterLowerMin + letterUpperMin + digitMin + punctuationMin
     remainingValues=[x for x in all_characters if x not in result]
